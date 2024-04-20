@@ -14,6 +14,24 @@
     Last name: <input type="text" th:field="${student.lastName}" />
 
     <br>
+    Country:
+    <select th:field="${student.country}">
+        <option th:each="tempCountry : ${countries}" th:value="${tempCountry}" th:text="${tempCountry}" />
+    </select>
+
+    <br>
+
+    Favourite programming language:
+    <input th:each="lng : ${languages}"
+           type="radio" th:value="${lng}"
+           th:field="${student.favouriteLanguage}"
+           th:text="${lng}" />
+    <br>
+
+    Choose operating System:
+    <input th:each="system : ${systems}" type="checkbox" th:field="${student.operatingSystem}" th:value="${system}" th:text="${system}" />
+
+    <br>
     <input type="submit" value="Submit" />
 
 
