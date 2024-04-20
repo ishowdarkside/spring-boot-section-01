@@ -20,7 +20,6 @@
     First name: <input type="text" th:field="${customer.firstName}" />
     <br>
     Last name <input type="text" th:field="${customer.lastName}" />
-    <br>
     <!-- Add error message (if present) -->
     <span th:if="${#fields.hasErrors('lastName')}" th:errors="${customer.lastName}" class="error"></span>
 
@@ -32,6 +31,11 @@
 
     Postal code: <input  type="text" th:field="${customer.postalCode}" />
     <span th:if="${#fields.hasErrors('postalCode')}" th:errors="${customer.postalCode}" class="error"></span>
+
+    <br>
+    Course code: <input type="text" th:field="${customer.courseCode}" />
+    <span th:if="${#fields.hasErrors('courseCode')}" th:errors="${customer.courseCode}" class="error" />
+
 
     <button type="submit">Submit</button>
 </form>

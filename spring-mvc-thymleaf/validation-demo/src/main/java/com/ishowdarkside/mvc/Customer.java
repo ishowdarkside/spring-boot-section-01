@@ -1,5 +1,6 @@
 package com.ishowdarkside.mvc;
 
+import com.ishowdarkside.mvc.validation.CourseCode;
 import jakarta.validation.constraints.*;
 
 
@@ -9,14 +10,18 @@ public class Customer {
     private String firstName;
 
     @NotNull(message = "is required")
-    @Size(min = 1,message = "is required")
+    @Size(min = 1, message = "is required")
 
     private String lastName;
 
 
+    @CourseCode(value = "LUV",message = "Must start with LUV")
+    private String courseCode;
+
+    @NotNull(message = "free pass is required")
     @Min(value = 0,message = "Free passses cant be less than 0")
     @Max(value = 10,message = "Maximum passes cant be greater than 10")
-    private int freePasses;
+    private Integer freePasses;
 
 
     @NotNull(message = "is required")
@@ -35,11 +40,11 @@ public class Customer {
     }
 
 
-    public int getFreePasses(){
+    public Integer getFreePasses(){
         return  this.freePasses;
     }
 
-    public void setFreePasses(int input){
+    public void setFreePasses(Integer input){
         this.freePasses = input;
     }
 
@@ -47,6 +52,13 @@ public class Customer {
         this.lastName=  input;
     }
 
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
 
     public String getPostalCode() {
         return postalCode;
