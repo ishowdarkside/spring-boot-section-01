@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Ishowdarkside Company Home Page</title>
+</head>
+<body>
+
+    <h2>Ishowdarkside Company Home Page</h2>
+    <hr>
+    Welcome to the Ishowdarkside company home page!
+
+    <!-- Display user name and role -->
+    <p>
+        user: <span sec:authentication="principal.username" />
+        <br>
+        Roles(s): <span sec:authentication="principal.authorities" />
+    </p>
+    <hr>
+    <!-- Add a link to point to /leaders  .. this is for managers-->
+    <p>
+        <a th:href="@{/leaders}">Leadership Meeting</a>
+        (Only for Manager peeps)
+    </p>
+    <br>
+    <p>
+        <a th:href="@{/systems}">IT Systems meeting</a>
+        (Only for admin peeps)
+    </p>
+
+    <hr>
+    <form method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout" />
+    </form>
+
+
+</body>
+</html>
