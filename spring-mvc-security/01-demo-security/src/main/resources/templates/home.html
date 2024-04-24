@@ -18,13 +18,13 @@
     </p>
     <hr>
     <!-- Add a link to point to /leaders  .. this is for managers-->
-    <p>
+    <p sec:authorize="hasRole('MANAGER')">
         <a th:href="@{/leaders}">Leadership Meeting</a>
         (Only for Manager peeps)
     </p>
     <br>
-    <p>
-        <a th:href="@{/systems}">IT Systems meeting</a>
+    <p sec:authorize="hasRole('ADMIN')">
+        <a  th:href="@{/systems}">IT Systems meeting</a>
         (Only for admin peeps)
     </p>
 
