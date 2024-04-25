@@ -1,6 +1,8 @@
 package com.ishowdarkside.demosecurity.security;
 
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToOne;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,6 +36,8 @@ public class DemoSecurityConfig {
 
         return  http.build();
     }
+
+    
 
 
     // add support for JDBC ... no more hardcoded users
