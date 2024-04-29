@@ -16,7 +16,27 @@ public class Review {
     @Column(name = "comment")
     private String comment;
 
-    @ManyToOne
-    @Column(name = "course_id")
-    private Course course;
+    public Review(){};
+
+    public Review(String comment){
+        this.comment = comment;
+    };
+
+
+    public void setComment(String comment){
+        this.comment = comment;
+    }
+
+    public String getComment(){
+        return this.comment;
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }
+

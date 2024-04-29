@@ -1,8 +1,6 @@
 package com.ishowdarkside.demo.dao;
 
-import com.ishowdarkside.demo.entity.Course;
-import com.ishowdarkside.demo.entity.Instructor;
-import com.ishowdarkside.demo.entity.InstructorDetail;
+import com.ishowdarkside.demo.entity.*;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -35,4 +33,13 @@ public interface AppDAO {
 
     void deleteCourseById(int id);
 
+    void save(Course course);
+
+    Course findCourseAndReviewsByCourseId(int id);
+
+    Course findCourseAndStudentsByCourseId(int id);
+
+    Student findCoursesAndStudentByStudentId(int id);
+
+    void update(Student student);
 }

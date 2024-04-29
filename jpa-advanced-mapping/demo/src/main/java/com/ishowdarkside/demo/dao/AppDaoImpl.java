@@ -4,8 +4,10 @@ package com.ishowdarkside.demo.dao;
 import com.ishowdarkside.demo.entity.Course;
 import com.ishowdarkside.demo.entity.Instructor;
 import com.ishowdarkside.demo.entity.InstructorDetail;
+import com.ishowdarkside.demo.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.TransactionScoped;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -123,6 +125,49 @@ public class AppDaoImpl implements  AppDAO {
 
         Course course = this.entityManager.find(Course.class,id);
         this.entityManager.remove(course);
+    }
+
+    @Override
+    @Transactional
+    public void save(Course course) {
+
+        this.entityManager.persist(course);
+    }
+
+    @Override
+    public Course findCourseAndReviewsByCourseId(int id) {
+
+        TypedQuery<Course> query = entityManager.createQuery("select c from Course c JOIN FETCH c.reviews where c.id =:data",Course.class);
+        query.setParameter("data",id);
+        return query.getSingleResult();
+    }
+
+    @Override
+    public Course findCourseAndStudentsByCourseId(int id) {
+
+        // create query
+        TypedQuery<Course> courseTypedQuery = this.entityManager.createQuery("select c from Course c JOIN FETCH c.students where c.id =:data",Course.class);
+        courseTypedQuery.setParameter("data",id);
+        // execute query
+        return courseTypedQuery.getSingleResult();
+
+    }
+
+    @Override
+    public Student findCoursesAndStudentByStudentId(int id) {
+
+        TypedQuery<Student> studentTypedQuery = this.entityManager.createQuery("select s from Student s JOIN FETCH s.courses where s.id = :data",Student.class);
+        studentTypedQuery.setParameter("data",id);
+        return studentTypedQuery.getSingleResult();
+
+    }
+
+    @Override
+    @Transactional
+    public void update(Student student) {
+
+        this.entityManager.merge(student);
+
     }
 
 
