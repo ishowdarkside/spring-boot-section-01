@@ -40,7 +40,7 @@ public class DemoApplication {
 
 	private void deleteStudent(AppDAO appDAO) {
 
-		int id = 2;
+		int id = 1;
 		appDAO.deleteStudentById(id);
 
 
